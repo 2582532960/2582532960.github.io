@@ -19,11 +19,11 @@ info:
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 defaults:
   # Favicon
-  favicon: /images/redefine-favicon.svg
+  favicon: /images/favicon.jpg
   # Site logo
   logo:
   # Site avatar
-  avatar: /images/redefine-avatar.svg
+  avatar: /images/favicon.jpg
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
@@ -45,9 +45,9 @@ global:
       url: https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap # Font URL to CSS file
     # English fonts
     english:
-      enable: true # Whether to enable custom chinese font
-      family: Farsan # Font family
-      url: https://fonts.googleapis.com/css2?family=Farsan&display=swap # Font URL to CSS file
+      enable: false # Whether to enable custom chinese font
+      family: # Font family
+      url: # Font URL to CSS file
   # Content max width
   content_max_width: 1000px
   # Sidebar width
@@ -100,10 +100,10 @@ home_banner:
     light: /images/wallhaven-wqery6-light.webp # light mode
     dark: /images/wallhaven-wqery6-dark.webp # dark mode
   # Home banner title
-  title: Theme Redefine
+  title: YiQiqi's Blog
   # Home banner subtitle
   subtitle:
-    text: ["This is the first message", "This is the seconf message", "etc"] # subtitle text, array
+    text: ["昨日之深渊，今日之浅谈", "路虽远，行则将至", "事虽难，做则可成"] # subtitle text, array
     hitokoto: # 一言配置
       enable: false # Whether to enable hitokoto
       api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
@@ -145,6 +145,8 @@ home_banner:
       twitter: # your twitter URL
       email: # your email
       # ...... # you can add more
+      [bilibili]:
+        [https://space.bilibili.com/1673800465?spm_id_from=333.1007.0.0]
       [git]: [https://gitee.com/yiqiqiqi]
     # Social links with QRcode drawers
     qrs:
@@ -169,15 +171,17 @@ navbar:
     Archives:
       path: /archives
       icon: fa-regular fa-archive # can be empty
-    # Status:
-    #   path: https://status.evanluo.top/
-    #   icon: fa-regular fa-chart-bar
+    Tags: #取名随意
+      icon: fa-solid fa-tags #图标
+      path: /tags/ #链接
+    Categories: #取名随意
+      icon: fa-solid fa-folder #图标
+      path: /categories/ #链接
     About:
       icon: fa-regular fa-user
       submenus:
-        # Me: /about
-        Github: https://github.com/EvanNotFound/hexo-theme-redefine
-        Blog: https://ohevan.com
+        Me: /about
+        相册: /masonry/
         # Friends: /friends
     # Links:
     #   icon: fa-regular fa-link
@@ -202,17 +206,17 @@ home:
     position: left # Sidebar position. left, right
     first_item: menu # First item in sidebar. menu, info
     announcement: # Announcement text
-    links:
-      # Archives:
-      #   path: /archives
-      #   icon: fa-regular fa-archive # can be empty
-      # Tags:
-      #   path: /tags
-      #   icon: fa-regular fa-tags # can be empty
-      # Categories:
-      #   path: /categories
-      #   icon: fa-regular fa-folder # can be empty
-      # ...... # you can add more
+    # links:
+    #   归档:
+    #     path: /archives
+    #     icon: fa-regular fa-archive # can be empty
+    #   标签:
+    #     path: /tags
+    #     icon: fa-regular fa-tags # can be empty
+    #   分类:
+    #     path: /categories
+    #     icon: fa-regular fa-folder # can be empty
+    # ...... # you can add more
   # Article date format
   article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
   # Article categories visibility
@@ -290,7 +294,7 @@ comment:
   config:
     # Waline comment system. See https://waline.js.org/
     waline:
-      serverUrl: https://example.example.com # Waline server URL. e.g. https://example.example.com
+      serverUrl: https://2582532960.github.io # Waline server URL. e.g. https://example.example.com
       lang: zh-CN # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
     # Gitalk comment system. See https://github.com/gitalk/gitalk
     gitalk:
@@ -325,7 +329,7 @@ footer:
   # Icon in footer, write fontawesome icon code here
   icon: '<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
   # The start time of the website, format: YYYY/MM/DD HH:mm:ss
-  start: 2022/8/17 11:45:14
+  start: 2023/10/30 11:45:14
   # Footer message
   customize:
   # ICP record number. See https://beian.miit.gov.cn/
@@ -356,17 +360,17 @@ plugins:
     enable: false # Whether to enable
   # Aplayer. See https://github.com/DIYgod/APlayer
   aplayer:
-    enable: false # Whether to enable
+    enable: true # Whether to enable
     type: fixed # fixed, mini
     audios:
-      - name: # audio name
-        artist: # audio artist
-        url: # audio url
-        cover: # audio cover url
-  #      - name: # audio name
-  #        artist: # audio artist
-  #        url: # audio url
-  #        cover: # audio cover url
+      - name: Imagine # audio name
+        artist: John Lennon # audio artist
+        url: https://evan.beee.top/music/Imagine%20-%20John%20Lennon.mp3 # audio url
+        cover: https://evan.beee.top/music/covers/Lennon_Imagine_Sleeve_1975.jpg # audio cover
+      - name: Something Just Like This
+        artist: Coldplay
+        url: https://evan.beee.top/music/Something%20Just%20Like%20This%20-%20The%20Chainsmokers%E3%80%81Coldplay.mp3
+        cover: https://evan.beee.top/music/covers/Something_Just_Like_This.png
   # .... you can add more audios here
   # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
   mermaid:
