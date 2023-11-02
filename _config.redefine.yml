@@ -301,7 +301,8 @@ comment:
       clientID: 57179f66e9881d5cd09a # GitHub Application Client ID
       clientSecret: 8ee910ae342c17706c1b8ab24b892964c400f63c # GitHub Application Client Secret
       repo: commentTest # GitHub repository
-      owner: yiqiqiqi # GitHub repository owner
+      owner: 2582532960 # GitHub repository owner
+      id: window.location.pathname
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
       version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
