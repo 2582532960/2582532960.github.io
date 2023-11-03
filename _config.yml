@@ -103,6 +103,6 @@ theme: redefine
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: "git"
+  type: git
   repo: git@github.com:2582532960/2582532960.github.io.git
   branch: master
