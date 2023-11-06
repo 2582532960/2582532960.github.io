@@ -25,18 +25,20 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="前言 本文基于 (“react”: “^16.13.1”) 版本 1.参考 express 下的 package.json 文件 express 的服务启动命令为：npm start  2.打开 react 项目的 package.json 文件，进行改写，增加 server 命令 路径为 express 项目名 &#x2F;bin&#x2F;www ，须根据自己项目 express 服务文件夹名">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200327160156652.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200327160703453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200327160910468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200327161426836.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200327161953614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200327162526396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://2582532960.github.io/images/express1.png">
+<meta property="og:image" content="https://2582532960.github.io/images/express2.png">
+<meta property="og:image" content="https://2582532960.github.io/images/express3.png">
+<meta property="og:image" content="https://2582532960.github.io/images/express4.png">
+<meta property="og:image" content="https://2582532960.github.io/images/express5.png">
+<meta property="og:image" content="https://2582532960.github.io/images/express6.png">
 <meta property="article:published_time" content="2023-11-06T01:23:16.000Z">
-<meta property="article:modified_time" content="2023-11-06T01:32:21.251Z">
+<meta property="article:modified_time" content="2023-11-06T01:43:48.894Z">
 <meta property="article:author" content="YiQiqi">
-<meta property="article:tag" content="JavaScript,react,express">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="express">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200327160156652.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://2582532960.github.io/images/express1.png">
     
     
     <!--- Icon Part-->
@@ -398,8 +400,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-11-06 09:32:21</span>
-            <span class="mobile">2023-11-06 09:32:21</span>
+            <span class="desktop">2023-11-06 09:43:48</span>
+            <span class="mobile">2023-11-06 09:43:48</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -427,7 +429,15 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/JavaScript-react-express/">JavaScript,react,express</a>&nbsp;
+                        <a href="/tags/JavaScript/">JavaScript</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/React/">React</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/express/">express</a>&nbsp;
                     </li>
                 
             </ul>
@@ -460,63 +470,71 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/20200327160156652.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70"
-                      alt="在这里插入图片描述"
+                     data-src="/images/express1.png"
+                     
                 ></p>
 <p><strong>2.打开 react 项目的 package.json 文件，进行改写，增加 server 命令</strong></p>
 <p>路径为 <strong>express 项目名 &#x2F;bin&#x2F;www</strong> ，须根据自己项目 express 服务文件夹名称进行改写</p>
-<p><code>&quot;server&quot;: &quot;node server/bin/www&quot;,</code></p>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;node server/bin/www&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure></div>
+
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/20200327160703453.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70"
-                      alt="在这里插入图片描述"
+                     data-src="/images/express2.png"
+                     
                 ></p>
 <p><strong>3.在 react 项目路径的基础上，启动 express 服务</strong></p>
-<p><code>npm run server</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run server</span><br></pre></td></tr></table></figure></div>
+
 <p>出现如下</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/20200327160910468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70"
-                      alt="在这里插入图片描述"
+                     data-src="/images/express3.png"
+                     
                 ></p>
 <p><strong>4.express 实现自动刷新 (热加载)</strong></p>
 <p>express 默认是没有热加载的，每次更改接口都需要重新启动，不然不生效</p>
 <p>使用 nodemon 实现 express 热加载。</p>
-<p><code>npm  install nodemon --save</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm  install nodemon --save</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>5.改写 package.json （注意是 react 项目的 package.json）</strong></p>
 <p>node 更改成 nodemon</p>
-<p><code>&quot;server&quot;: &quot;nodemon server/bin/www&quot;,</code></p>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;server&quot;</span><span class="punctuation">:</span> <span class="string">&quot;nodemon server/bin/www&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure></div>
+
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/20200327161426836.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70"
-                      alt="在这里插入图片描述"
+                     data-src="/images/express4.png"
+                     
                 ></p>
 <p><strong>6.启动 npm run server</strong></p>
-<p><code>npm run server</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run server</span><br></pre></td></tr></table></figure></div>
+
 <p>至此配置热加载完成，以下为一条命令同时启动 react 项目以及 express 服务</p>
 <p><strong>7.使用 concurrently (一条命令同时启动 react 项目以及 express 服务)</strong></p>
-<p><code>npm install concurrently --save</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install concurrently --save</span><br></pre></td></tr></table></figure></div>
+
 <p>还是修改 react 项目的 package.json,增加 <strong>dev</strong> 命令</p>
-<p><code>&quot;dev&quot;: &quot;concurrently \&quot;npm start\&quot; \&quot;npm run server\&quot;&quot;,</code></p>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;concurrently \&quot;npm start\&quot; \&quot;npm run server\&quot;&quot;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure></div>
+
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/20200327161953614.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70"
-                      alt="在这里插入图片描述"
+                     data-src="/images/express5.png"
+                     
                 ></p>
 <p><strong>8. 使用 dev 命令同时启动 react 项目以及 express 服务端</strong></p>
-<p><code>npm run dev</code></p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure></div>
+
 <p>启动成功</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="https://img-blog.csdnimg.cn/20200327162526396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzIzMzkxNA==,size_16,color_FFFFFF,t_70"
-                      alt="在这里插入图片描述"
+                     data-src="/images/express6.png"
+                     
                 ></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43233914/article/details/105143620" >原文 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43233914/article/details/105143620" >点击查看原文 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
         </div>
 
@@ -531,7 +549,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-11-06 09:32:21
+                    :</strong> 2023-11-06 09:43:48
             </li>
         
         <li>
@@ -556,7 +574,15 @@
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/JavaScript-react-express/">#JavaScript,react,express</a>&nbsp;
+                        <a href="/tags/JavaScript/">#JavaScript</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/React/">#React</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/express/">#express</a>&nbsp;
                     </li>
                 
             </ul>
