@@ -184,4 +184,49 @@
         <tag>express</tag>
       </tags>
   </entry>
+  <entry>
+    <title>使用 Vite 快速构建前端 React 项目</title>
+    <url>/2023/11/06/%E4%BD%BF%E7%94%A8Vite%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA%E5%89%8D%E7%AB%AFReact%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<h2 id="一、初始化项目"><a href="#一、初始化项目" class="headerlink" title="一、初始化项目"></a>一、初始化项目</h2><p>首先，在终端命令行中输入如下的命令：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">npm create vite</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="code"><pre><span class="line">✔ Project name<span class="punctuation">:</span> vite-project</span><br><span class="line">? Select a framework<span class="punctuation">:</span> › - Use arrow-keys. Return to submit.</span><br><span class="line">    vanilla <span class="comment">// 无前端框架</span></span><br><span class="line">    vue     <span class="comment">// 基于 Vue</span></span><br><span class="line"> &gt;  react   <span class="comment">// 基于 React</span></span><br><span class="line">    preact  <span class="comment">// 基于 Preact（一款精简版的类 React 框架）</span></span><br><span class="line">    lit     <span class="comment">// 基于 lit（一款 Web Components 框架）</span></span><br><span class="line">    svelte  <span class="comment">// 基于 Svelte</span></span><br></pre></td></tr></table></figure></div>
+
+<p>此处，我们选择构建的框架为 React。接着，执行如下命令在启动本地项目：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">cd vite-project</span><br><span class="line">npm install</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure></div>
+
+<p>安装完成之后，去浏览器中打开 localhost:&#x2F;&#x2F;5173&#x2F;页面就可以看到示例项目了。</p>
+<h2 id="二、配置文件"><a href="#二、配置文件" class="headerlink" title="二、配置文件"></a>二、配置文件</h2><p>路径别名的配置（vite.config.ts）</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&quot;vite&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> react <span class="keyword">from</span> <span class="string">&quot;@vitejs/plugin-react&quot;</span>;</span><br><span class="line"><span class="comment">// 引入 path 包注意两点:</span></span><br><span class="line"><span class="comment">// 1. 为避免类型报错，你需要通过 `pnpm i @types/node -D` 安装类型</span></span><br><span class="line"><span class="comment">// 2. tsconfig.node.json 中设置 `allowSyntheticDefaultImports: true`，以允许下面的 default 导入方式</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&quot;path&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">react</span>()],</span><br><span class="line">  <span class="attr">resolve</span>: &#123;</span><br><span class="line">    <span class="attr">alias</span>: &#123;</span><br><span class="line">      <span class="string">&quot;@&quot;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&quot;./src&quot;</span>),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>配置路径别名的提示（tsconfig.json）</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// tsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&quot;baseUrl&quot;</span>: <span class="string">&quot;./&quot;</span>,</span><br><span class="line">    <span class="string">&quot;paths&quot;</span>: &#123;</span><br><span class="line">      <span class="string">&quot;@/*&quot;</span>: [<span class="string">&quot;./src/*&quot;</span>],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="三、集成-react-router"><a href="#三、集成-react-router" class="headerlink" title="三、集成 react-router"></a>三、集成 react-router</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i --save-dev react-router-dom <span class="comment">//这里可以使用cnpm代替npm命令</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//说明： -save-dev 的意思是将模块安装到项目目录下，并在package文件的devDependencies节点写入依赖。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//总结--save-dev和-save的区别如下:</span></span><br><span class="line"><span class="comment">//devDependencies 节点下的模块是我们在开发时需要用的，比如项目中使用的 gulp ，压缩css、js的模块。这些模块在我们的项目部署后是不需要的，所以我们可以使用 -save-dev 的形式安装。像 express 这些模块是项目运行必备的，应该安装在 dependencies 节点下，所以我们应该使用 -save 的形式安装。</span></span><br></pre></td></tr></table></figure></div>
+
+<p><a class="link"   href="https://reactrouter.com/en/main/start/overview" >路由官网 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link"   href="http://www.reactrouter.cn/docs/api#routes-%E5%92%8C-route" >中文文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="四、集成-Antd"><a href="#四、集成-Antd" class="headerlink" title="四、集成 Antd"></a>四、集成 Antd</h2><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install antd --save</span><br></pre></td></tr></table></figure></div>
+
+<p>图标</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">npm install @ant-design/icons --save</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="五、样式"><a href="#五、样式" class="headerlink" title="五、样式"></a>五、样式</h2><p>reset.css 是一种 CSS 文件，它的作用是重置网页的默认样式。由于不同浏览器对于 HTML 默认样式的设定不同，导致网页在不同浏览器上的显示效果各异。为了避免这种情况，可以使用 reset.css 对网页默认样式进行重置，使不同浏览器上的显示效果尽量一致。</p>
+<p>现在需要对全部的样式进行清除，使用命令导入依赖：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i reset-css</span><br></pre></td></tr></table></figure></div>
+
+<p>然后在 main.tsx 中进行引入，引入的位置必须要在<code>import App from &quot;./App.tsx&quot;;</code>上面</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;reset-css&quot;</span>;</span><br></pre></td></tr></table></figure></div>
+
+<p>安装 sass</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i --save-dev sass</span><br></pre></td></tr></table></figure></div>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>Vite</tag>
+      </tags>
+  </entry>
 </search>
