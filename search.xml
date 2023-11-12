@@ -284,4 +284,103 @@
         <tag>React</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Nginx学习</title>
+    <url>/2023/11/12/Nginx%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="1-Nginx-简介"><a href="#1-Nginx-简介" class="headerlink" title="1.Nginx 简介"></a>1.Nginx 简介</h1><h2 id="1-1-什么是-Nginx"><a href="#1-1-什么是-Nginx" class="headerlink" title="1.1 什么是 Nginx"></a>1.1 什么是 Nginx</h2><p>Nginx (engine x) 是一个高性能的 HTTP 和反向代理 web 服务器，同时也提供了 IMAP&#x2F;POP3&#x2F;SMTP 服务。</p>
+<p>其将源代码以类 BSD 许可证的形式发布，因它的稳定性、丰富的功能集、简单的配置文件和低系统资源的消耗而闻名。</p>
+<p>Nginx 是一款轻量级的 Web 服务器&#x2F;反向代理服务器及电子邮件（IMAP&#x2F;POP3）代理服务器，在 BSD-like 协议下发行。其特点是占有内存少，并发能力强，事实上 nginx 的并发能力在同类型的网页服务器中表现较好。</p>
+<p>Nginx 专为性能优化而开发，性能是其最重要的考量，实现上非常注重效率，能经受高负载的考验，有报告表明能支持高达 50000 个并发连接数。</p>
+<h2 id="1-2-正向代理"><a href="#1-2-正向代理" class="headerlink" title="1.2 正向代理"></a>1.2 正向代理</h2><p>Nginx 不仅可以做反向代理，实现负载均衡。还能用作正向代理来进行上网等功能。</p>
+<p>正向代理:如果把局域网外的 Internet 想象成一个巨大的资源库，则局域网中的客户端要访问 Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。·</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.png"
+                     
+                ></p>
+<h2 id="1-3-反向代理"><a href="#1-3-反向代理" class="headerlink" title="1.3 反向代理"></a>1.3 反向代理</h2><p>反向代理，其实客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器，由反向代理服务器去选择目标服务器获取数据后,在返回给客户端，此时反向代理服务器和目标服务器对外就是一个服务器，暴露的是代理服务器地址，隐藏了真实服务器 IP 地址。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86.png"
+                     
+                ></p>
+<h2 id="1-4-正向代理和反向代理的异同"><a href="#1-4-正向代理和反向代理的异同" class="headerlink" title="1.4 正向代理和反向代理的异同"></a>1.4 正向代理和反向代理的异同</h2><p><strong>相同点</strong></p>
+<p>正向代理和反向代理所处的位置都是客户端和真实服务器之间，所做的事情也都是把客户端的请求转发给服务器，再把服务器的响应转发给客户端。</p>
+<p><strong>不同点</strong></p>
+<p>正向代理是客户端的代理，服务器不知道真正的客户端是谁；反向代理是服务器的代理，客户端不知道真正的服务器是谁</p>
+<p>正向代理一般是客户端架设的；反向代理一般是服务器架设的</p>
+<p>正向代理主要是用来解决访问限制问题；反向代理则是提供负载均衡、安全防护等作用。二者都能提高访问速度</p>
+<h2 id="1-5-通过故事理解正向代理和反向代理"><a href="#1-5-通过故事理解正向代理和反向代理" class="headerlink" title="1.5 通过故事理解正向代理和反向代理"></a>1.5 通过故事理解正向代理和反向代理</h2><p><strong>（正向代理）</strong></p>
+<p>同学 A 急需一笔钱，他直接向富豪马云借钱，但是他俩之间毫无关系，结果当然是没有借到。经过一番打听，同学 A 的老师王先生是马云的好朋友，于是 A 同学请求王老师，让王老师帮忙向马云借钱，最终马云同意借钱给王老师，王老师把这笔钱转交给了 A 同学。</p>
+<p>上文就相当于一个正向代理的过程，A 同学为客户端，马云为服务器，王老师为正向代理。A 同学请求王老师向马云借钱，这个过程中 A 同学隐藏了自己的角色，马云事实上是不知道到底是谁借的钱。相当于服务器不知道真正发起请求的客户端是谁。</p>
+<p><strong>（反向代理）</strong></p>
+<p>如果遇到困难需要拨打 10086 客服电话，可能一个地区的 10086 客服有几十个，但是我们不需要关心电话那头的人是谁。只需要拨通 10086 的总机号码，电话那头总有客服会回应。</p>
+<p>这里的 10086 总机号码就相当于反向代理，客户端不知道真正提供服务的人是谁。</p>
+<h2 id="1-6-负载均衡"><a href="#1-6-负载均衡" class="headerlink" title="1.6 负载均衡"></a>1.6 负载均衡</h2><p>负载均衡，顾名思义就是将负载分摊到多个系统中进行处理，达到均衡的状态。</p>
+<p>随着互联网不断发展，网站的访问量也在不断增加。如果只依靠单台服务器进行处理，可能会遇到瓶颈，导致整个网站崩溃。而采用负载均衡的方式，可以将负载分摊到多台服务器上进行处理，提高整个系统的稳定性和吞吐量。</p>
+<p>另外，负载均衡还可以提高网站的可用性。在某些情况下，某些服务器可能出现故障，无法正常工作。但是采用负载均衡的方式，可以将故障服务器的负载转移到其他正常的服务器上，确保网站一直处于可用状态。</p>
+<h2 id="1-7-动静分离"><a href="#1-7-动静分离" class="headerlink" title="1.7 动静分离"></a>1.7 动静分离</h2><p>动静分离是指在 web 服务器架构中，将静态页面与动态页面或者静态内容接口和动态内容接口分开不同系统访问的架构设计方法，进而提升整个服务访问性能和可维护性。</p>
+<h1 id="2-Nginx-的安装"><a href="#2-Nginx-的安装" class="headerlink" title="2.Nginx 的安装"></a>2.Nginx 的安装</h1><h2 id="2-1-基本安装与启动"><a href="#2-1-基本安装与启动" class="headerlink" title="2.1 基本安装与启动"></a>2.1 基本安装与启动</h2><p>1）使用远程连接工具连接 linux 操作系统</p>
+<p>2）<a class="link"   href="https://nginx.org/" >https://nginx.org/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>3）安装 nginx</p>
+<p>把安装压缩文件放到 linux 系统中</p>
+<p>解压缩 nginx-xx.tar.gz 包</p>
+<p>进入解压缩目录,执行<code>./configure</code></p>
+<p>4）nginx 相关素材（依赖）</p>
+<p><strong>安装 gcc</strong></p>
+<p>yum install -y gcc</p>
+<p><strong>执行命令<code>./configure --prefix=/usr/local/nginx</code></strong></p>
+<p><strong>安装 perl 库</strong></p>
+<p>yum install -y pcre pcre-devel</p>
+<p><strong>执行命令<code>./configure --prefix=/usr/local/nginx</code></strong></p>
+<p><strong>安装 zlib 库</strong></p>
+<p>yum install -y zlib zlib-devel</p>
+<p><strong>执行命令<code>./configure --prefix=/usr/local/nginx</code></strong></p>
+<p>接下来执行：</p>
+<p><code>make &amp;&amp; make install</code></p>
+<p>安装成功之后,在&#x2F;usr 下多出一个文件夹 local&#x2F;nginx,在 nginx 里边有 sbin 有启动脚本</p>
+<p>5）启动 nginx</p>
+<p>进入&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;sbin</p>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="code"><pre><span class="line">./nginx 启动</span><br><span class="line">./nginx -s stop 快速停止</span><br><span class="line">./nginx -s quit 优雅关闭<span class="punctuation">,</span>在退出前完成已经接受的连接请求</span><br><span class="line">./nginx -s reload 重新加载配置</span><br><span class="line">./nginx -v 查看版本号</span><br></pre></td></tr></table></figure></div>
+
+<p>6）关闭防火墙</p>
+<p><code>systemctl stop firewalld.service</code></p>
+<p>禁止防火墙开机启动</p>
+<p><code>systemctl disable firewalld.service</code></p>
+<p>重启防火墙</p>
+<p><code>firewall -cmd --reload</code></p>
+<p>浏览器再次访问,成功</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/nginx.png"
+                     
+                ></p>
+<h2 id="2-2-安装成系统服务"><a href="#2-2-安装成系统服务" class="headerlink" title="2.2 安装成系统服务"></a>2.2 安装成系统服务</h2><p>创建服务脚本</p>
+<p><code>vi /usr/lib/systemd/system/nginx.service</code></p>
+<p>服务脚本内容</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=nginx -  web server</span><br><span class="line">After=network.target remote-fs.target nss-1ookup.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">PIDFile=/usr/local/nginx/logs/nginx.pid</span><br><span class="line">ExecStartPre=/usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">ExecStart=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</span><br><span class="line">ExecReload=/usr/local/nginx/sbin/nginx -s reload</span><br><span class="line">ExecStop=/usr/local/nginx/sbin/nginx -s stop</span><br><span class="line">ExecQuit=/usr/local/nginx/sbin/nginx -s quit</span><br><span class="line">PrivateTmp=true</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure></div>
+
+<p>重新加载系统服务</p>
+<p><code>systemctl daemon-reload</code></p>
+<p>查看先前启动的服务还在不在</p>
+<p><code>ps -ef | grep nginx</code></p>
+<p>关闭 nginx</p>
+<p><code>./nginx -s stop</code></p>
+<p>启动服务</p>
+<p><code>systemctl start nginx.service</code></p>
+<p>开机启动</p>
+<p><code>systemctl enable nginx.service</code></p>
+<p>查看状态</p>
+<p><code>systemctl status nginx.service</code></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
 </search>
