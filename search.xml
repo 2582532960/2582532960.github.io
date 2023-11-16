@@ -326,7 +326,7 @@
 <p>2）<a class="link"   href="https://nginx.org/" >https://nginx.org/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>3）安装 nginx</p>
 <p>把安装压缩文件放到 linux 系统中</p>
-<p>解压缩 nginx-xx.tar.gz 包<code>tar -xvf nginx-xx.tar,gz</code></p>
+<p>解压缩 nginx-xx.tar.gz 包<code>tar -xvf nginx-xx.tar.gz</code></p>
 <p>进入解压缩目录,执行<code>./configure</code></p>
 <p>4）nginx 相关素材（依赖）</p>
 <p><strong>安装 gcc</strong></p>
@@ -373,30 +373,41 @@
 <p><code>systemctl enable nginx.service</code></p>
 <p>查看状态</p>
 <p><code>systemctl status nginx.service</code></p>
-<h1 id="3-Nginx配置文件"><a href="#3-Nginx配置文件" class="headerlink" title="3.Nginx配置文件"></a>3.Nginx配置文件</h1><p>nginx配置文件位置：<code>/usr/local/nginx/conf/nginx.conf</code></p>
-<p>nginx配置文件由三部分组成</p>
-<h2 id="第一部分：全局块"><a href="#第一部分：全局块" class="headerlink" title="第一部分：全局块"></a>第一部分：全局块</h2><p><strong>从配置文件开始到 events 块之间的内容，主要会设置一些影响nginx服务器整体运行的配置指令</strong>，主要包括配置运行Nginx服务器的用户(组)、允许生成的worker process 数，进程PID存放路径、日志存放路径和类型以及配置文件的引入等。</p>
+<h1 id="3-Nginx-配置文件"><a href="#3-Nginx-配置文件" class="headerlink" title="3.Nginx 配置文件"></a>3.Nginx 配置文件</h1><p>nginx 配置文件位置：<code>/usr/local/nginx/conf/nginx.conf</code></p>
+<p>nginx 配置文件由三部分组成</p>
+<h2 id="第一部分：全局块"><a href="#第一部分：全局块" class="headerlink" title="第一部分：全局块"></a>第一部分：全局块</h2><p><strong>从配置文件开始到 events 块之间的内容，主要会设置一些影响 nginx 服务器整体运行的配置指令</strong>，主要包括配置运行 Nginx 服务器的用户(组)、允许生成的 worker process 数，进程 PID 存放路径、日志存放路径和类型以及配置文件的引入等。</p>
 <p>比如上面第一行配置的：</p>
 <p><code>worker_processes  1;</code></p>
-<p>这是Nginx 服务器并发处理服务的关键配置，<strong>worker_processes值越大，可以支持的并发处理量也越多</strong>，但是会受到硬件、软件等设备的制约</p>
-<h2 id="第二部分：events块"><a href="#第二部分：events块" class="headerlink" title="第二部分：events块"></a>第二部分：events块</h2><p>比如上面的配置：</p>
+<p>这是 Nginx 服务器并发处理服务的关键配置，<strong>worker_processes 值越大，可以支持的并发处理量也越多</strong>，但是会受到硬件、软件等设备的制约</p>
+<h2 id="第二部分：events-块"><a href="#第二部分：events-块" class="headerlink" title="第二部分：events 块"></a>第二部分：events 块</h2><p>比如上面的配置：</p>
 <p><code>events &#123;     worker_connections  1024; &#125;</code></p>
-<p><strong>events 块涉及的指令主要影响Nginx服务器与用户的网络连接</strong>，常用的设置包括是否开启对多work process下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个word process 可以同时支持的最大连接数等。</p>
-<p><strong>上述例子就表示每个work process支持的最大连接数为1024</strong>。</p>
-<p>这部分的配置对Nginx的性能影响较大，在实际中应该灵活配置。</p>
-<h2 id="第三部分：http块"><a href="#第三部分：http块" class="headerlink" title="第三部分：http块"></a>第三部分：http块</h2><div class="highlight-container" data-rel="Http"><figure class="iseeu highlight http"><figcaption><span>&#123;</span></figcaption><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        </span><br><span class="line">        location / &#123;</span><br><span class="line">            root   html;</span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong>events 块涉及的指令主要影响 Nginx 服务器与用户的网络连接</strong>，常用的设置包括是否开启对多 work process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 word process 可以同时支持的最大连接数等。</p>
+<p><strong>上述例子就表示每个 work process 支持的最大连接数为 1024</strong>。</p>
+<p>这部分的配置对 Nginx 的性能影响较大，在实际中应该灵活配置。</p>
+<h2 id="第三部分：http-块"><a href="#第三部分：http-块" class="headerlink" title="第三部分：http 块"></a>第三部分：http 块</h2><p>&#96;<br>http {<br>include mime.types;<br>default_type application&#x2F;octet-stream;<br>sendfile on;<br>keepalive_timeout 65;<br>server {<br>listen 80;<br>server_name localhost;</p>
+<pre><code>    location / &#123;
+        root   html;
+        index  index.html index.htm;
+    &#125;
 
-<p>这算是<strong>Nginx服务器配置中最频繁的部分</strong>，代理、缓存和日志定义等绝大多数功能和第三方模块的配置都在这里。</p>
-<p>需要注意的是:<strong>http块也可以包括http全局块、server块</strong>。</p>
-<h3 id="①http全局块"><a href="#①http全局块" class="headerlink" title="①http全局块"></a>①http全局块</h3><p>http 全局块配置的指令包括文件引入、MIME-TYPE定义、日志自定义、连接超时时间、单链接请求数上限等。</p>
-<h3 id="②server块"><a href="#②server块" class="headerlink" title="②server块"></a>②server块</h3><p>这块和虚拟主机有密切关系，虚拟主机从用户角度看，和一台独立的硬件主机是完全一样的，该技术的产生是为了节省互联网服务器硬件成本。</p>
-<p>每个http 块可以包括多个server 块，而每个server 块就相当于一个虚拟主机。</p>
-<p>而每个server块也分为全局server 块，以及可以同时包含多个locaton块。</p>
-<p><strong>1、全局server 块</strong></p>
-<p>最常见的配置是本虚拟机主机的监听配置和本虚拟主机的名称或IP配置。</p>
-<p><strong>2、location块</strong></p>
-<p>一个server 块可以配置多个location 块。</p>
-<p>这块的主要作用是基于Nginx服务器接收到的请求字符串（例如server_name&#x2F;uri-string )，对虚拟主机名称(也可以是IP别名)之外的字符串(例如前面的&#x2F;uri-string)进行匹配，对特定的请求进行处理。地址定向、数据缓存和应答控制等功能，还有许多第三方模块的配置也在这里进行。</p>
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html &#123;
+        root   html;
+    &#125;
+&#125;
+</code></pre>
+<p>}<br>&#96;</p>
+<p>这算是<strong>Nginx 服务器配置中最频繁的部分</strong>，代理、缓存和日志定义等绝大多数功能和第三方模块的配置都在这里。</p>
+<p>需要注意的是:<strong>http 块也可以包括 http 全局块、server 块</strong>。</p>
+<h3 id="①http-全局块"><a href="#①http-全局块" class="headerlink" title="①http 全局块"></a>①http 全局块</h3><p>http 全局块配置的指令包括文件引入、MIME-TYPE 定义、日志自定义、连接超时时间、单链接请求数上限等。</p>
+<h3 id="②server-块"><a href="#②server-块" class="headerlink" title="②server 块"></a>②server 块</h3><p>这块和虚拟主机有密切关系，虚拟主机从用户角度看，和一台独立的硬件主机是完全一样的，该技术的产生是为了节省互联网服务器硬件成本。</p>
+<p>每个 http 块可以包括多个 server 块，而每个 server 块就相当于一个虚拟主机。</p>
+<p>而每个 server 块也分为全局 server 块，以及可以同时包含多个 locaton 块。</p>
+<p><strong>1、全局 server 块</strong></p>
+<p>最常见的配置是本虚拟机主机的监听配置和本虚拟主机的名称或 IP 配置。</p>
+<p><strong>2、location 块</strong></p>
+<p>一个 server 块可以配置多个 location 块。</p>
+<p>这块的主要作用是基于 Nginx 服务器接收到的请求字符串（例如 server_name&#x2F;uri-string )，对虚拟主机名称(也可以是 IP 别名)之外的字符串(例如前面的&#x2F;uri-string)进行匹配，对特定的请求进行处理。地址定向、数据缓存和应答控制等功能，还有许多第三方模块的配置也在这里进行。</p>
 ]]></content>
       <categories>
         <category>学习</category>
