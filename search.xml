@@ -538,7 +538,7 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images.example.png"
+                     data-src="/images/example.png"
                      
                 ></p>
 <hr>
