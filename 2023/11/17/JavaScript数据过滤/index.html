@@ -13,23 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://2582532960.github.io/2023/11/13/react分页功能实现/"/>
+    <link rel="canonical" href="https://2582532960.github.io/2023/11/17/javascript数据过滤/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="静态页面分页，定义 dataList 数组模拟后端返回数据 示例代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878">
+        <meta name="description" content="1、 使用 filter()方法filter() 方法可以根据指定的条件筛选出满足条件的元素，并返回一个新的数组。 123const arr &#x3D; [1, 2, 3, 4, 5];const filteredArr &#x3D; arr.filter((num) &#x3D;&gt; num &gt; 3);console.log(filteredArr); &#x2F;&#x2F; 输出 [4, 5]  2、使用 find()方法fin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React分页功能实现">
-<meta property="og:url" content="https://2582532960.github.io/2023/11/13/React%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:title" content="JavaScript数据过滤">
+<meta property="og:url" content="https://2582532960.github.io/2023/11/17/JavaScript%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="静态页面分页，定义 dataList 数组模拟后端返回数据 示例代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878">
+<meta property="og:description" content="1、 使用 filter()方法filter() 方法可以根据指定的条件筛选出满足条件的元素，并返回一个新的数组。 123const arr &#x3D; [1, 2, 3, 4, 5];const filteredArr &#x3D; arr.filter((num) &#x3D;&gt; num &gt; 3);console.log(filteredArr); &#x2F;&#x2F; 输出 [4, 5]  2、使用 find()方法fin">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-11-13T14:38:43.000Z">
-<meta property="article:modified_time" content="2023-11-15T01:55:08.818Z">
+<meta property="article:published_time" content="2023-11-17T06:05:49.000Z">
+<meta property="article:modified_time" content="2023-11-17T06:54:46.997Z">
 <meta property="article:author" content="YiQiqi">
 <meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
     
     
@@ -42,7 +41,7 @@
     
     <title>
         
-            React分页功能实现 -
+            JavaScript数据过滤 -
         
         YiQiqi&#39;s Blog
     </title>
@@ -363,7 +362,7 @@
 
         <div class="article-title">
             
-                <h1 class="article-title-regular">React分页功能实现</h1>
+                <h1 class="article-title-regular">JavaScript数据过滤</h1>
             
             </div>
             
@@ -385,15 +384,15 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-11-13 22:38:43</span>
-        <span class="mobile">2023-11-13 22:38:43</span>
+        <span class="desktop">2023-11-17 14:05:49</span>
+        <span class="mobile">2023-11-17 14:05:49</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-11-15 09:55:08</span>
-            <span class="mobile">2023-11-15 09:55:08</span>
+            <span class="desktop">2023-11-17 14:54:46</span>
+            <span class="mobile">2023-11-17 14:54:46</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -424,10 +423,6 @@
                         <a href="/tags/JavaScript/">JavaScript</a>&nbsp;
                     </li>
                 
-                    <li>
-                        | <a href="/tags/React/">React</a>&nbsp;
-                    </li>
-                
             </ul>
         </span>
     
@@ -451,43 +446,28 @@
 
 
         <div class="article-content markdown-body">
-            <p>静态页面分页，定义 dataList 数组模拟后端返回数据</p>
-<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><div class="highlight-container" data-rel="Tsx"><figure class="iseeu highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">&quot;./index.scss&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Pagination</span> &#125; <span class="keyword">from</span> <span class="string">&quot;antd&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">RightOutlined</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@ant-design/icons&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">NavLink</span> &#125; <span class="keyword">from</span> <span class="string">&quot;react-router-dom&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Trends</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> dataList = [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">4</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">5</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">6</span>,</span><br><span class="line">      <span class="attr">title</span>:</span><br><span class="line">        <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">7</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">8</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">9</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">10</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">11</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">12</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">id</span>: <span class="number">13</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;科技成果科技成果科技成果科技成果科技成果&quot;</span>,</span><br><span class="line">      <span class="attr">time</span>: <span class="string">&quot;2023-11-13 12:21&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">const</span> [page, setPage] = <span class="title function_">useState</span>(<span class="number">1</span>); <span class="comment">//当前页码</span></span><br><span class="line">  <span class="keyword">const</span> total = dataList.<span class="property">length</span>;</span><br><span class="line">  <span class="keyword">const</span> [todosPerPage, setTodosPerPage] = <span class="title function_">useState</span>(<span class="number">10</span>); <span class="comment">//存储每页上的项目数</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> lastTodoInView = page * todosPerPage;</span><br><span class="line">  <span class="keyword">const</span> firstTodoInView = lastTodoInView - todosPerPage;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> todosForDisplay = dataList.<span class="title function_">slice</span>(firstTodoInView, lastTodoInView);</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleChange</span> = (<span class="params">pageNumber: <span class="built_in">any</span></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setPage</span>(pageNumber);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">backgroundColor:</span> &quot;#<span class="attr">f6f6f6</span>&quot; &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.trends&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">NavLink</span> <span class="attr">to</span>=<span class="string">&quot;/&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">NavLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">RightOutlined</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">NavLink</span> <span class="attr">to</span>=<span class="string">&quot;/science&quot;</span>&gt;</span>科技成果<span class="tag">&lt;/<span class="name">NavLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.title&#125;</span>&gt;</span>科技成果<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.trendsInner&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          &#123;todosForDisplay.map((item: any) =&gt; &#123;</span></span><br><span class="line"><span class="language-xml">            return (</span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">div</span> <span class="attr">key</span>=<span class="string">&#123;item.id&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">NavLink</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                  <span class="attr">to</span>=<span class="string">&#123;</span>`/<span class="attr">science</span>/<span class="attr">scienceDetail</span>/$&#123;<span class="attr">item.id</span>&#125;`&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                  <span class="attr">className</span>=<span class="string">&#123;styles.trends_item&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                &gt;</span></span></span><br><span class="line"><span class="language-xml">                  <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.text&#125;</span>&gt;</span>&#123;item.title&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                  <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;styles.time&#125;</span>&gt;</span>&#123;item.time&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">NavLink</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            );</span></span><br><span class="line"><span class="language-xml">          &#125;)&#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Pagination</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">className</span>=<span class="string">&#123;styles.pagination&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">defaultCurrent</span>=<span class="string">&#123;1&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">current</span>=<span class="string">&#123;page&#125;</span> //<span class="attr">当前页码</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">total</span>=<span class="string">&#123;total&#125;</span> //<span class="attr">总页数</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">pageSize</span>=<span class="string">&#123;todosPerPage&#125;</span> //<span class="attr">存储每页上的项目数</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">onChange</span>=<span class="string">&#123;handleChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+            <h3 id="1、-使用-filter-方法"><a href="#1、-使用-filter-方法" class="headerlink" title="1、 使用 filter()方法"></a>1、 使用 filter()方法</h3><p><code>filter()</code> 方法可以<strong>根据指定的条件筛选出满足条件的元素，并返回一个新的数组</strong>。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> filteredArr = arr.<span class="title function_">filter</span>(<span class="function">(<span class="params">num</span>) =&gt;</span> num &gt; <span class="number">3</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filteredArr); <span class="comment">// 输出 [4, 5]</span></span><br></pre></td></tr></table></figure></div>
 
-<p>主要考验了对 slice 方法的掌握</p>
-<h2 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h2><p>slice() 方法可从已有的数组中返回选定的元素。</p>
-<p>slice()方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</p>
-<p><strong>注意：</strong> slice() 方法不会改变原始数组。</p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p><code>array.slice(start, end)</code></p>
-<h2 id="参数-Values"><a href="#参数-Values" class="headerlink" title="参数 Values"></a>参数 Values</h2><table>
-<thead>
-<tr>
-<th>参数</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><em>start</em></td>
-<td align="left">可选。规定从何处开始选取。如果是负数，那么它规定从数组尾部开始算起的位置。也就是说，-1 指最后一个元素，-2 指倒数第二个元素，以此类推。</td>
-</tr>
-<tr>
-<td><em>end</em></td>
-<td align="left">可选。规定从何处结束选取。该参数是数组片断结束处的数组下标。如果没有指定该参数，那么切分的数组包含从 start 到数组结束的所有元素。如果这个参数是负数，那么它规定的是从数组尾部开始算起的元素。</td>
-</tr>
-</tbody></table>
-<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><table>
-<thead>
-<tr>
-<th align="left">Type</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Array</td>
-<td>返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</td>
-</tr>
-</tbody></table>
-<p>更多实例与解析见【菜鸟教程】<br><a class="link"   target="_blank" rel="noopener" href="http://doc.yaojieyun.com/www.runoob.com/jsref/jsref-slice-array.html" >http://doc.yaojieyun.com/www.runoob.com/jsref/jsref-slice-array.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="2、使用-find-方法"><a href="#2、使用-find-方法" class="headerlink" title="2、使用 find()方法"></a>2、使用 find()方法</h3><p><code>find()</code> 方法用于<strong>查找并返回数组中满足指定条件的第一个元素</strong>。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> filteredElement = arr.<span class="title function_">find</span>(<span class="function">(<span class="params">num</span>) =&gt;</span> num &gt; <span class="number">3</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filteredElement); <span class="comment">// 输出 4</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3、使用-findIndex-方法"><a href="#3、使用-findIndex-方法" class="headerlink" title="3、使用 findIndex()方法"></a>3、使用 findIndex()方法</h3><p><code>findIndex()</code>方法返回<strong>数组中符合指定条件的第一个元素的索引，如果找不到满足条件的元素，将返回 -1</strong>。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> filteredIndex = arr.<span class="title function_">findIndex</span>(<span class="function">(<span class="params">num</span>) =&gt;</span> num &gt; <span class="number">3</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filteredIndex); <span class="comment">// 输出 3</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4、使用-reduce-方法"><a href="#4、使用-reduce-方法" class="headerlink" title="4、使用 reduce()方法"></a>4、使用 reduce()方法</h3><p><code>reduce()</code> 方法可以利用累加器函数对数组中的元素进行累积计算，然后返回一个结果。我们可以在回调函数中添加过滤条件，只保留符合条件的元素也，可以实现数组过滤的功能。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> filteredArr = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arr[i] &gt; <span class="number">3</span>) &#123;</span><br><span class="line">    filteredArr.<span class="title function_">push</span>(arr[i]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(filteredArr); <span class="comment">// 输出 [4, 5]</span></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> evenSum = numbers.<span class="title function_">reduce</span>(<span class="function">(<span class="params">acc, num</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (num % <span class="number">2</span> === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> acc + num;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> acc;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(evenSum); <span class="comment">// 输出 6 (2 + 4)</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="5、使用-includes-方法"><a href="#5、使用-includes-方法" class="headerlink" title="5、使用 includes()方法"></a>5、使用 includes()方法</h3><p><code>includes()</code>方法用于<strong>检查数组是否包含指定的元素</strong>。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> includesThree = arr.<span class="title function_">includes</span>(<span class="number">3</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(includesThree); <span class="comment">// 输出 true</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="6、使用-some-方法"><a href="#6、使用-some-方法" class="headerlink" title="6、使用 some()方法"></a>6、使用 some()方法</h3><p><code>some()</code>方法用于<strong>检查数组中是否至少存在一个元素满足指定条件</strong>。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> hasGreaterThanThree = arr.<span class="title function_">some</span>(<span class="function">(<span class="params">num</span>) =&gt;</span> num &gt; <span class="number">3</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(hasGreaterThanThree); <span class="comment">// 输出 true</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="7、-使用-every-方法"><a href="#7、-使用-every-方法" class="headerlink" title="7、 使用 every()方法"></a>7、 使用 every()方法</h3><p><code>every()</code>方法用于<strong>检查数组中是否所有元素都满足指定条件</strong>。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> allGreaterThanZero = arr.<span class="title function_">every</span>(<span class="function">(<span class="params">num</span>) =&gt;</span> num &gt; <span class="number">0</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(allGreaterThanZero); <span class="comment">// 输出 true</span></span><br></pre></td></tr></table></figure></div>
 
         </div>
 
@@ -495,18 +475,18 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> React分页功能实现</li>
+        <li><strong>标题:</strong> JavaScript数据过滤</li>
         <li><strong>作者:</strong> YiQiqi</li>
         <li><strong>创建于
-                :</strong> 2023-11-13 22:38:43</li>
+                :</strong> 2023-11-17 14:05:49</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-11-15 09:55:08
+                    :</strong> 2023-11-17 14:54:46
             </li>
         
         <li>
-            <strong>链接:</strong> https://2582532960.github.io/2023/11/13/React分页功能实现/
+            <strong>链接:</strong> https://2582532960.github.io/2023/11/17/JavaScript数据过滤/
         </li>
         <li>
             <strong>
@@ -530,10 +510,6 @@
                         <a href="/tags/JavaScript/">#JavaScript</a>&nbsp;
                     </li>
                 
-                    <li class="tag-item">
-                        <a href="/tags/React/">#React</a>&nbsp;
-                    </li>
-                
             </ul>
         
 
@@ -542,29 +518,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2023/11/17/JavaScript%E6%95%B0%E6%8D%AE%E8%BF%87%E6%BB%A4/"
-                        >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">JavaScript数据过滤</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                         rel="next"
-                        href="/2023/11/12/Nginx%E5%AD%A6%E4%B9%A0/"
+                        href="/2023/11/13/React%E5%88%86%E9%A1%B5%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/"
                         >
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">Nginx学习</span>
+                                <span class="post-nav-title-item">React分页功能实现</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex justify-center items-center">
@@ -642,8 +603,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">React分页功能实现</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-text">示例代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E5%92%8C%E7%94%A8%E6%B3%95"><span class="nav-text">定义和用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E6%95%B0-Values"><span class="nav-text">参数 Values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-text">返回值</span></a></li></ol>
+        <div class="page-title">JavaScript数据过滤</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81-%E4%BD%BF%E7%94%A8-filter-%E6%96%B9%E6%B3%95"><span class="nav-text">1、 使用 filter()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8-find-%E6%96%B9%E6%B3%95"><span class="nav-text">2、使用 find()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E4%BD%BF%E7%94%A8-findIndex-%E6%96%B9%E6%B3%95"><span class="nav-text">3、使用 findIndex()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8-reduce-%E6%96%B9%E6%B3%95"><span class="nav-text">4、使用 reduce()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E4%BD%BF%E7%94%A8-includes-%E6%96%B9%E6%B3%95"><span class="nav-text">5、使用 includes()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E4%BD%BF%E7%94%A8-some-%E6%96%B9%E6%B3%95"><span class="nav-text">6、使用 some()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81-%E4%BD%BF%E7%94%A8-every-%E6%96%B9%E6%B3%95"><span class="nav-text">7、 使用 every()方法</span></a></li></ol>
 
     </div>
 </div>
