@@ -487,4 +487,68 @@
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>一些Css样式整理</title>
+    <url>/2023/11/17/%E4%B8%80%E4%BA%9BCss%E6%A0%B7%E5%BC%8F%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h2 id="文本超出省略号"><a href="#文本超出省略号" class="headerlink" title="文本超出省略号"></a>文本超出省略号</h2><p>通过 css 设置文字强制不换行超出用省略号表示:</p>
+<div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap; 文本强制不换行；</span><br><span class="line">    <span class="attribute">text-overflow</span>:ellipsis; 文本溢出显示省略号；</span><br><span class="line">    <span class="attribute">overflow</span>:hidden; 溢出的部分隐藏；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>如果要想显示两行超出用省略号表示:</p>
+<div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">  -webkit-line-clamp: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">  <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">  -webkit-box-orient: vertical;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="背景颜色线性渐变"><a href="#背景颜色线性渐变" class="headerlink" title="背景颜色线性渐变"></a>背景颜色线性渐变</h2><p>CSS：linear-gradient()背景颜色线性渐变</p>
+<p>语法：</p>
+<p><code>background-image: linear-gradient(direction, color-stop1, color-stop2, ...);</code></p>
+<p>direction：用角度值指定渐变的方向（或角度）；</p>
+<p>color-stop1,color-stop2,…：用于指定渐变的起止颜色</p>
+<p>_ps_：至少需要两种颜色</p>
+<table>
+<thead>
+<tr>
+<th>方向</th>
+<th>枚举值</th>
+<th>角度值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>从下到上</td>
+<td>to top</td>
+<td>0deg</td>
+</tr>
+<tr>
+<td>从左到右</td>
+<td>to right</td>
+<td>90deg</td>
+</tr>
+<tr>
+<td>从上到下（默认）</td>
+<td>to bottom</td>
+<td>180deg</td>
+</tr>
+<tr>
+<td>从右到左</td>
+<td>to left</td>
+<td>270deg</td>
+</tr>
+</tbody></table>
+<p>举例：</p>
+<div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right, <span class="number">#feac5e</span>, <span class="number">#c779d0</span>, <span class="number">#4bc0c8</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>效果如下：</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images.example.png"
+                     
+                ></p>
+<hr>
+<p>慢慢整理……</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Css</tag>
+      </tags>
+  </entry>
 </search>
