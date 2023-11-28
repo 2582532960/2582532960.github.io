@@ -641,4 +641,30 @@
         <tag>Git</tag>
       </tags>
   </entry>
+  <entry>
+    <title>一些项目总结</title>
+    <url>/2023/11/28/%E4%B8%80%E4%BA%9B%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="dangerouslySetInnerHTML"><a href="#dangerouslySetInnerHTML" class="headerlink" title="dangerouslySetInnerHTML"></a>dangerouslySetInnerHTML</h1><p><code>dangerouslySetInnerHTML</code>，翻译过来就是：危险的设置内部HTML。</p>
+<p><code>dangerouslySetInnerHTML</code>是React中的一个属性，它允许您将HTML作为字符串直接插入到组件中。使用<code>dangerouslySetInnerHTML</code>属性时，您必须传递一个对象，该对象具有一个名为<code>__html</code>的属性，该属性包含您要插入到组件中的HTML字符串。<code>dangerouslySetInnerHTML</code>是React中的一个属性，它允许您将HTML作为字符串直接插入到组件中。使用<code>dangerouslySetInnerHTML</code>属性时，您必须传递一个对象，该对象具有一个名为<code>__html</code>的属性，该属性包含您要插入到组件中的HTML字符串。</p>
+<p>以下是一个示例：</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">MyComponent</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> htmlString = <span class="string">&quot;&lt;div&gt;Hello, world!&lt;/div&gt;&quot;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">dangerouslySetInnerHTML</span>=<span class="string">&#123;&#123;</span> <span class="attr">__html:</span> <span class="attr">htmlString</span> &#125;&#125; /&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>请注意，使用<code>dangerouslySetInnerHTML</code>属性时需要格外小心，因为它可以导致<a class="link"   href="https://so.csdn.net/so/search?q=%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB&spm=1001.2101.3001.7020" >跨站脚本攻击 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>（XSS）和其他安全问题。请确保您信任要插入的HTML，并在可能的情况下使用更安全的方法来渲染内容。</p>
+<h1 id="封装时间格式化函数"><a href="#封装时间格式化函数" class="headerlink" title="封装时间格式化函数"></a>封装时间格式化函数</h1><p>Moment.js是一个轻量级的JavaScript时间库。官网：<a class="link"   href="http://momentjs.cn/" >http://momentjs.cn/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><code>npm install moment --save</code>或者<code>yarn add moment</code>安装</p>
+<p>在<code>/src/utils/index.ts</code></p>
+<div class="highlight-container" data-rel="Tsx"><figure class="iseeu highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> moment <span class="keyword">from</span> <span class="string">&quot;moment&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;moment/dist/locale/zh-cn&quot;</span>;</span><br><span class="line"></span><br><span class="line">moment.<span class="title function_">locale</span>(<span class="string">&quot;zh-cn&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> <span class="title function_">getFormatTime</span> = (<span class="params">time: <span class="built_in">string</span> | <span class="built_in">number</span>, format?: <span class="built_in">string</span></span>) =&gt; &#123;</span><br><span class="line">  format = format || <span class="string">&quot;lll&quot;</span>;</span><br><span class="line">  <span class="comment">// 由于后端时间是0区时间</span></span><br><span class="line">  <span class="comment">// const s = &#x27;2023-11-28T14:51:31+08:00&#x27;;</span></span><br><span class="line">  <span class="comment">// return moment(time).utcOffset(s).format(format);</span></span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">moment</span>(time).<span class="title function_">format</span>(format);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<p>页面中引用</p>
+<div class="highlight-container" data-rel="Tsx"><figure class="iseeu highlight tsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; getFormatTime &#125; <span class="keyword">from</span> <span class="string">&quot;@/utils/index&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">getFormatTime</span>(<span class="string">&quot;2023-11-28T14:51:31+08:00&quot;</span>));</span><br><span class="line"><span class="comment">//2023-11-28T14:51:31+08:00   =&gt;   2023年11月28日 14:51</span></span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>React</tag>
+      </tags>
+  </entry>
 </search>
