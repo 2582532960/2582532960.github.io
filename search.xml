@@ -551,4 +551,94 @@
         <tag>Css</tag>
       </tags>
   </entry>
+  <entry>
+    <title>git总结</title>
+    <url>/2023/11/28/git%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/git.png"
+                     
+                ></p>
+<blockquote>
+<ul>
+<li>Workspace：工作区</li>
+<li>Index &#x2F; Stage：暂存区</li>
+<li>Repository：仓库区（或本地仓库）</li>
+<li>Remote：远程仓库</li>
+</ul>
+</blockquote>
+<h1 id="1-git-配置命令"><a href="#1-git-配置命令" class="headerlink" title="1. git 配置命令"></a>1. git 配置命令</h1><h2 id="查询配置信息"><a href="#查询配置信息" class="headerlink" title="查询配置信息"></a>查询配置信息</h2><ol>
+<li>列出当前配置：<code>git config --list</code>;</li>
+<li>列出 repository 配置：<code>git config --local --list</code>;</li>
+<li>列出全局配置：<code>git config --global --list</code>;</li>
+<li>列出系统配置：<code>git config --system --list</code>;</li>
+</ol>
+<h2 id="第一次使用-git，配置用户信息"><a href="#第一次使用-git，配置用户信息" class="headerlink" title="第一次使用 git，配置用户信息"></a>第一次使用 git，配置用户信息</h2><ol>
+<li>配置用户名：<code>git config --global user.name &quot;your name&quot;</code>;</li>
+<li>配置用户邮箱：<code>git config --global user.email &quot;youremail@github.com&quot;</code>;</li>
+</ol>
+<h1 id="2-工作区上的操作命令"><a href="#2-工作区上的操作命令" class="headerlink" title="2. 工作区上的操作命令"></a>2. 工作区上的操作命令</h1><h2 id="新建仓库"><a href="#新建仓库" class="headerlink" title="新建仓库"></a>新建仓库</h2><ol>
+<li>将工作区中的项目文件使用 git 进行管理，即创建一个新的本地仓库：<code>git init</code>；</li>
+<li>从远程 git 仓库复制项目：<code>git clone &lt;url&gt;</code>，如：<code>git clone git://github.com/wasd/example.git</code>;克隆项目时如果想定义新的项目名，可以在 clone 命令后指定新的项目名：<code>git clone git://github.com/wasd/example.git mygit</code>；</li>
+</ol>
+<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><ol>
+<li>提交工作区所有文件到暂存区：<code>git add .</code></li>
+<li>提交工作区中指定文件到暂存区：<code>git add &lt;file1&gt; &lt;file2&gt; ...</code>;</li>
+<li>提交工作区中某个文件夹中所有文件到暂存区：<code>git add [dir]</code>;</li>
+</ol>
+<h2 id="查询信息"><a href="#查询信息" class="headerlink" title="查询信息"></a>查询信息</h2><ol>
+<li>查询当前工作区所有文件的状态：<code>git status</code>;</li>
+</ol>
+<h1 id="3-暂存区上的操作命令"><a href="#3-暂存区上的操作命令" class="headerlink" title="3.暂存区上的操作命令"></a>3.暂存区上的操作命令</h1><h2 id="提交文件到版本库"><a href="#提交文件到版本库" class="headerlink" title="提交文件到版本库"></a>提交文件到版本库</h2><ol>
+<li>将暂存区中的文件提交到本地仓库中，即打上新版本：<code>git commit -m &quot;commit_info&quot;</code>;</li>
+<li>将所有已经使用 git 管理过的文件暂存后一并提交，跳过 add 到暂存区的过程：<code>git commit -a -m &quot;commit_info&quot;</code>;</li>
+<li>提交文件时，发现漏掉几个文件，或者注释写错了，可以撤销上一次提交：<code>git commit --amend</code>;</li>
+</ol>
+<h2 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h2><ol>
+<li>比较暂存区与上一版本的差异：<code>git diff --cached</code>;</li>
+<li>指定文件在暂存区和本地仓库的不同：<code>git diff &lt;file-name&gt; --cached</code>;</li>
+<li>查看提交历史：<code>git log</code>；参数<code>-p</code>展开每次提交的内容差异，用<code>-2</code>显示最近的两次更新，如<code>git log -p -2</code>;</li>
+</ol>
+<h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><ol>
+<li>创建分支：<code>git branch &lt;branch-name&gt;</code>，如<code>git branch testing</code>；</li>
+<li>从当前所处的分支切换到其他分支：<code>git checkout &lt;branch-name&gt;</code>，如<code>git checkout testing</code>；</li>
+<li>新建并切换到新建分支上：<code>git checkout -b &lt;branch-name&gt;</code>;</li>
+<li>删除分支：<code>git branch -d &lt;branch-name&gt;</code>；</li>
+<li>将当前分支与指定分支进行合并：<code>git merge &lt;branch-name&gt;</code>;</li>
+<li>显示本地仓库的所有分支：<code>git branch</code>;</li>
+<li>查看各个分支最后一个提交对象的信息：<code>git branch -v</code>;</li>
+<li>查看哪些分支已经合并到当前分支：<code>git branch --merged</code>;</li>
+<li>查看当前哪些分支还没有合并到当前分支：<code>git branch --no-merged</code>;</li>
+<li>把远程分支合并到当前分支：<code>git merge &lt;remote-name&gt;/&lt;branch-name&gt;</code>，如<code>git merge origin/serverfix</code>；如果是单线的历史分支不存在任何需要解决的分歧，只是简单的将 HEAD 指针前移，所以这种合并过程可以称为快进（Fast forward），而如果是历史分支是分叉的，会以当前分叉的两个分支作为两个祖先，创建新的提交对象；如果在合并分支时，遇到合并冲突需要人工解决后，再才能提交；</li>
+<li>在远程分支的基础上创建新的本地分支<code>：git checkout -b &lt;branch-name&gt; &lt;remote-name&gt;/&lt;branch-name&gt;</code>，如<code>git checkout -b serverfix origin/serverfix</code>;</li>
+<li>从远程分支 checkout 出来的本地分支，称之为跟踪分支。在跟踪分支上向远程分支上推送内容：<code>git push</code>。该命令会自动判断应该向远程仓库中的哪个分支推送数据；在跟踪分支上合并远程分支：<code>git pull</code>；</li>
+<li>将一个分支里提交的改变移到基底分支上重放一遍：<code>git rebase &lt;rebase-branch&gt; &lt;branch-name&gt;</code>，如<code>git rebase master server</code>，将特性分支 server 提交的改变在基底分支 master 上重演一遍；使用 rebase 操作最大的好处是像在单个分支上操作的，提交的修改历史也是一根线；如果想把基于一个特性分支上的另一个特性分支变基到其他分支上，可以使用<code>--onto</code>操作：<code>git rebase --onto &lt;rebase-branch&gt; &lt;feature branch&gt; &lt;sub-feature-branch&gt;</code>，如<code>git rebase --onto master server client</code>；使用 rebase 操作应该遵循的原则是：<strong>一旦分支中的提交对象发布到公共仓库，就千万不要对该分支进行 rebase 操作</strong>；</li>
+</ol>
+<h1 id="5-本地仓库上的操作"><a href="#5-本地仓库上的操作" class="headerlink" title="5.本地仓库上的操作"></a>5.本地仓库上的操作</h1><ol>
+<li>查看本地仓库关联的远程仓库：<code>git remote</code>；在克隆完每个远程仓库后，远程仓库默认为<code>origin</code>;加上<code>-v</code>的参数后，会显示远程仓库的<code>url</code>地址；</li>
+<li>添加远程仓库，一般会取一个简短的别名：<code>git remote add [remote-name] [url]</code>，比如：<code>git remote add example git://github.com/example/example.git</code>;</li>
+<li>从远程仓库中抓取本地仓库中没有的更新：<code>git fetch [remote-name]</code>，如<code>git fetch origin</code>;使用 fetch 只是将远端数据拉到本地仓库，并不自动合并到当前工作分支，只能人工合并。如果设置了某个分支关联到远程仓库的某个分支的话，可以使用<code>git pull</code>来拉去远程分支的数据，然后将远端分支自动合并到本地仓库中的当前分支；</li>
+<li>将本地仓库某分支推送到远程仓库上：<code>git push [remote-name] [branch-name]</code>，如<code>git push origin master</code>；如果想将本地分支推送到远程仓库的不同名分支：<code>git push &lt;remote-name&gt; &lt;local-branch&gt;:&lt;remote-branch&gt;</code>，如<code>git push origin serverfix:awesomebranch</code>;如果想删除远程分支：<code>git push [romote-name] :&lt;remote-branch&gt;</code>，如<code>git push origin :serverfix</code>。这里省略了本地分支，也就相当于将空白内容推送给远程分支，就等于删掉了远程分支。</li>
+<li>查看远程仓库的详细信息：<code>git remote show origin</code>；</li>
+<li>修改某个远程仓库在本地的简称：<code>git remote rename [old-name] [new-name]</code>，如<code>git remote rename origin org</code>；</li>
+<li>移除远程仓库：<code>git remote rm [remote-name]</code>；</li>
+</ol>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>新建仓库<code>git init</code></p>
+<p>克隆<code>git clone &lt;url&gt;</code></p>
+<p>提交到暂存区<code>git add .</code></p>
+<p>提交到本地仓库<code>git commit -m &#39;描述信息&#39;</code></p>
+<p>添加远程仓库<code>git remote add [remote-name] [url]</code></p>
+<p>拉取<code>git pull</code></p>
+<p>推送<code>git push origin master</code></p>
+<hr>
+<p>参考：<a class="link"   href="https://juejin.cn/post/6844903598522908686" >https://juejin.cn/post/6844903598522908686 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
 </search>
