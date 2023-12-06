@@ -25,15 +25,16 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="dangerouslySetInnerHTMLdangerouslySetInnerHTML，翻译过来就是：危险的设置内部 HTML。 dangerouslySetInnerHTML是 React 中的一个属性，它允许您将 HTML 作为字符串直接插入到组件中。使用dangerouslySetInnerHTML属性时，您必须传递一个对象，该对象具有一个名为__html的属性，该属性包含您要插入到组">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://2582532960.github.io/%E9%A1%B9%E7%9B%AEUpload/22.png">
+<meta property="og:image" content="https://2582532960.github.io/images/%E9%A1%B9%E7%9B%AEUpload.png">
+<meta property="og:image" content="https://2582532960.github.io/images/postman.png">
 <meta property="article:published_time" content="2023-11-28T06:09:50.000Z">
-<meta property="article:modified_time" content="2023-12-02T11:56:22.993Z">
+<meta property="article:modified_time" content="2023-12-06T02:58:51.303Z">
 <meta property="article:author" content="YiQiqi">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="React">
 <meta property="article:tag" content="Axios">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://2582532960.github.io/%E9%A1%B9%E7%9B%AEUpload/22.png">
+<meta name="twitter:image" content="https://2582532960.github.io/images/%E9%A1%B9%E7%9B%AEUpload.png">
     
     
     <!--- Icon Part-->
@@ -395,8 +396,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-12-02 19:56:22</span>
-            <span class="mobile">2023-12-02 19:56:22</span>
+            <span class="desktop">2023-12-06 10:58:51</span>
+            <span class="mobile">2023-12-06 10:58:51</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -487,7 +488,7 @@
 <h1 id="Antd-的-Upload-组件"><a href="#Antd-的-Upload-组件" class="headerlink" title="Antd 的 Upload 组件"></a>Antd 的 Upload 组件</h1><p>项目要求是写一篇文章，可以选择是否需要展示轮播图片。</p>
 <p>这个地方传给后端的参数 String 类型的都对，唯独文件 File 这块就是不符合要求，导致无法使用增加文章的接口。请教老师之后做的修改代码。</p>
 <ul>
-<li>传参改成<code>formData.append()</code>的方式</li>
+<li>传参改成<code>formData.append()</code>的方式(这个就对应了 postman 带有文件上传的时候要用 form-data 的形式传参)</li>
 <li>项目要求轮播图片只上传一张，接口也就要一张，所以给后端的文件键值对不要数组。</li>
 </ul>
 <div class="highlight-container" data-rel="Tsx"><figure class="iseeu highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 上传轮播图片</span></span><br><span class="line"><span class="keyword">const</span> [fileList, setFileList]: <span class="built_in">any</span> = useState&lt;<span class="title class_">UploadFile</span>[]&gt;([]); <span class="comment">//上传的文件列表</span></span><br><span class="line"><span class="keyword">const</span> [nfile, setNfile]: <span class="built_in">any</span> = <span class="title function_">useState</span>(<span class="literal">null</span>); <span class="comment">//上传的文件</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">handleChange</span>: <span class="title class_">UploadProps</span>[<span class="string">&quot;onChange&quot;</span>] = <span class="function">(<span class="params">&#123;</span></span></span><br><span class="line"><span class="params"><span class="function">  fileList: newFileList,</span></span></span><br><span class="line"><span class="params"><span class="function">  file,</span></span></span><br><span class="line"><span class="params"><span class="function">&#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//限制文件上传格式</span></span><br><span class="line">  <span class="keyword">const</span> isJpgOrPng = file.<span class="property">type</span> === <span class="string">&quot;image/jpeg&quot;</span> || file.<span class="property">type</span> === <span class="string">&quot;image/png&quot;</span>;</span><br><span class="line">  <span class="keyword">if</span> (!isJpgOrPng) &#123;</span><br><span class="line">    message.<span class="title function_">error</span>(<span class="string">&quot;You can only upload JPG/PNG file!&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">setNfile</span>(file);</span><br><span class="line">  <span class="title function_">setRotation</span>(<span class="number">1</span>);</span><br><span class="line">  <span class="title function_">setFileList</span>(newFileList);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//点击发布按钮</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">handleSubmit</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="title class_">NewsForm</span>.<span class="property">current</span></span><br><span class="line">    .<span class="title function_">validateFields</span>()</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function">(<span class="params">res: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">setFormInfo</span>(res); <span class="comment">//收集表单数据</span></span><br><span class="line">      <span class="title function_">setIsSureOpen</span>(<span class="literal">true</span>); <span class="comment">//打开Modal框</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .<span class="title function_">catch</span>(<span class="function">(<span class="params">error: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">      message.<span class="title function_">error</span>(<span class="string">&quot;请填写必填项&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//点击确认发布按钮</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">handleYes</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (content === <span class="string">&quot;&quot;</span> || content.<span class="title function_">trim</span>() === <span class="string">&quot;&lt;p&gt;&lt;/p&gt;&quot;</span>) &#123;</span><br><span class="line">    message.<span class="title function_">error</span>(<span class="string">&quot;内容不能为空&quot;</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span><br><span class="line">    <span class="keyword">if</span> (nfile != <span class="literal">null</span>) &#123;</span><br><span class="line">      formData.<span class="title function_">append</span>(<span class="string">&quot;rotation_pic_url&quot;</span>, nfile); <span class="comment">//文章图片地址</span></span><br><span class="line">    &#125;</span><br><span class="line">    formData.<span class="title function_">append</span>(<span class="string">&quot;title&quot;</span>, formInfo.<span class="property">title</span>); <span class="comment">//文章标题</span></span><br><span class="line">    formData.<span class="title function_">append</span>(<span class="string">&quot;source&quot;</span>, formInfo.<span class="property">source</span>); <span class="comment">//文章来源</span></span><br><span class="line">    formData.<span class="title function_">append</span>(<span class="string">&quot;config_type&quot;</span>, formInfo.<span class="property">config_type</span>); <span class="comment">//文章类别</span></span><br><span class="line">    formData.<span class="title function_">append</span>(<span class="string">&quot;is_rotation&quot;</span>, rotation); <span class="comment">//是否轮播，1是2否</span></span><br><span class="line">    formData.<span class="title function_">append</span>(<span class="string">&quot;config_content&quot;</span>, content); <span class="comment">//文章内容</span></span><br><span class="line">    formData.<span class="title function_">append</span>(<span class="string">&quot;status&quot;</span>, <span class="string">&quot;1&quot;</span>); <span class="comment">//状态，1草稿2发布3取消发布</span></span><br><span class="line">    formData.<span class="title function_">append</span>(<span class="string">&quot;author&quot;</span>, <span class="string">&quot;1&quot;</span>); <span class="comment">//默认作者1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="title class_">HomePostAPI</span>(formData).<span class="title function_">then</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">        notification.<span class="title function_">info</span>(&#123;</span><br><span class="line">          <span class="attr">message</span>: <span class="string">`通知`</span>,</span><br><span class="line">          <span class="attr">description</span>: <span class="string">&quot;操作成功&quot;</span>,</span><br><span class="line">          <span class="attr">placement</span>: <span class="string">&quot;bottomRight&quot;</span>,</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() &gt; <span class="number">0.5</span> ? resolve : reject, <span class="number">1000</span>);</span><br><span class="line">        location.<span class="property">href</span> = <span class="string">`/homeConfig/drafts`</span>;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="title function_">setIsSureOpen</span>(<span class="literal">false</span>); <span class="comment">//关闭Modal框</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></div>
@@ -497,9 +498,47 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/%E9%A1%B9%E7%9B%AEUpload/22.png"
-                      alt="项目Upload"
+                     data-src="/images/%E9%A1%B9%E7%9B%AEUpload.png"
+                     
                 ></p>
+<h1 id="文件上传与修改"><a href="#文件上传与修改" class="headerlink" title="文件上传与修改"></a>文件上传与修改</h1><p>同样也是继上一个总结之后发现的 Bug，上一个总结中文件确实是可以完美上传了，但是如果表单不仅仅是上传文件，还有其他诸如文章介绍，文章内容等等，当你进行表单修改的时候，你可能不选择修改文件，可这时你会发现，你拿不到已经上传的文件了，你必须上传一个新的文件才能继续进行提交工作。</p>
+<p>后来项目需要后端进行一下接口的修改</p>
+<p>文件上传与修改逻辑应该是：</p>
+<ul>
+<li><p>先调用上传接口，接口会返回一个文件地址，前端再调用创建接口，把地址传给后端。</p>
+</li>
+<li><p>前端先上传文件，后端给前端返回保存地址，然后新增的时候前端把保存地址和文件名一起再传给后端。</p>
+</li>
+</ul>
+<h1 id="项目后对-Postman-使用的一些总结"><a href="#项目后对-Postman-使用的一些总结" class="headerlink" title="项目后对 Postman 使用的一些总结"></a>项目后对 Postman 使用的一些总结</h1><p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/postman.png"
+                     
+                ></p>
+<p>请求设计区分为以下 6 个面板。</p>
+<ul>
+<li>Params：URL 中的查询参数，地址中?后端的部分数据</li>
+<li>Authorization：如果接口需要授权，可以在该页面设置授权方式（type）和授权信息。</li>
+<li>Header：请求头，可以设置请求类型（Content-Type）和 Cookie。</li>
+<li>Body：请求数据。</li>
+<li>Pre-request Script：请求前脚本，JavaScript 语法，用于在发送请求前生成一些动态数据或做一些处理</li>
+<li>Tests：请求后脚本，JavaScript 语法，用于请求返回后做一些处理或断言结果</li>
+</ul>
+<p>其中 Body 下主要包含以下 4 中格式。</p>
+<ul>
+<li>form-data：混合表单，支持上传文件</li>
+<li>x-www-form-urlencoded：文本表单</li>
+<li>raw：原始格式，支持 JSON&#x2F;XML 格式（后面可选择）</li>
+<li>binary：二进制格式，用于发送二进制数据流</li>
+</ul>
+<p>响应区用于展示发送完请求，服务端的响应数据及状态，由 Body 响应体、Headers 响应头、Cookie 响应 Cookies、Test Results 测试结果 4 部分组成。</p>
+<p>响应内容中可以以 Pretty（美化格式）、Raw（原始格式）、Preview（HTML 预览格式）等方式查看响应数据。测试结果用于显示请求中 Tests 中设置的断言的测试结果。</p>
+<ul>
+<li>Pretty：翻译成中文就是漂亮，也就是说返回的 Body 数据在这个标签中查看，都是经过格式化的，格式化后的数据看起来更加直观，所以 Postman 默认展示的也是这个选项。比如：返回 HTML 页面，它会在格式化成 HTML 格式后再展示，比如：返回 JSON，同样也会格式化成 JSON 格式后再展示。</li>
+<li>Raw：翻译成中文是未经过加工的，也就是原始数据，原始数据一般都是本文格式、未经过格式化处理的，一般在抓包工具中都有这个选项。</li>
+<li>Preview：翻译成中文就是预览，这个选项一般对返回 HTML 的页面效果特别明显，如请求百度后返回结果，点击这个选项后就直接能查看到的页面，如下图。同时，这个选项和浏览器抓包中的 Preview 也是一样的。</li>
+</ul>
 
         </div>
 
@@ -514,7 +553,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-12-02 19:56:22
+                    :</strong> 2023-12-06 10:58:51
             </li>
         
         <li>
@@ -645,7 +684,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">一些项目总结</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dangerouslySetInnerHTML"><span class="nav-text">dangerouslySetInnerHTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0"><span class="nav-text">封装时间格式化函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="nav-text">拦截器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="nav-text">前置路由守卫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Antd-%E7%9A%84-Upload-%E7%BB%84%E4%BB%B6"><span class="nav-text">Antd 的 Upload 组件</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dangerouslySetInnerHTML"><span class="nav-text">dangerouslySetInnerHTML</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%81%E8%A3%85%E6%97%B6%E9%97%B4%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%87%BD%E6%95%B0"><span class="nav-text">封装时间格式化函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="nav-text">拦截器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E8%B7%AF%E7%94%B1%E5%AE%88%E5%8D%AB"><span class="nav-text">前置路由守卫</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Antd-%E7%9A%84-Upload-%E7%BB%84%E4%BB%B6"><span class="nav-text">Antd 的 Upload 组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%BF%AE%E6%94%B9"><span class="nav-text">文件上传与修改</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%90%8E%E5%AF%B9-Postman-%E4%BD%BF%E7%94%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93"><span class="nav-text">项目后对 Postman 使用的一些总结</span></a></li></ol>
 
     </div>
 </div>
