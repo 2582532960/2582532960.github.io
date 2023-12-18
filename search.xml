@@ -741,4 +741,105 @@
         <tag>Axios</tag>
       </tags>
   </entry>
+  <entry>
+    <title>HTTP和HTTPS</title>
+    <url>/2023/12/18/HTTP%E5%92%8CHTTPS/</url>
+    <content><![CDATA[<h2 id="HTTP-HTTPS-简介"><a href="#HTTP-HTTPS-简介" class="headerlink" title="HTTP&#x2F;HTTPS 简介"></a>HTTP&#x2F;HTTPS 简介</h2><p>HTTP 协议是 Hyper Text Transfer Protocol（超文本传输协议）的缩写，是用于从万维网（ WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。</p>
+<p>HTTP 是一个基于 TCP&#x2F;IP 通信协议来传递数据（HTML 文件、图片文件、查询结果等）。</p>
+<p>HTTPS 协议是 HyperText Transfer Protocol Secure（超文本传输安全协议）的缩写，是一种通过计算机网络进行安全通信的传输协议。</p>
+<p>HTTPS 经由 HTTP 进行通信，但利用 SSL&#x2F;TLS 来加密数据包，HTTPS 开发的主要目的，是提供对网站服务器的身份认证，保护交换资料的隐私与完整性。</p>
+<p>HTTP 的 URL 是由 http:&#x2F;&#x2F; 起始与默认使用端口 <strong>80</strong>，而 HTTPS 的 URL 则是由 https:&#x2F;&#x2F; 起始与默认使用端口<strong>443</strong>。</p>
+<h2 id="HTTP-的特点和缺点"><a href="#HTTP-的特点和缺点" class="headerlink" title="HTTP 的特点和缺点"></a>HTTP 的特点和缺点</h2><p><strong>特点</strong>：<code>无连接</code>、<code>无状态</code>、<code>灵活</code>、<code>简单快速</code></p>
+<ul>
+<li><strong>无连接</strong>：每一次请求都要连接一次，请求结束就会断掉，不会保持连接</li>
+<li><strong>无状态</strong>：每一次请求都是独立的，请求结束不会记录连接的任何信息(<strong>提起裤子就不认人的意思</strong>)，减少了网络开销，这<code>是优点也是缺点</code></li>
+<li><strong>灵活</strong>：通过http协议中头部的<code>Content-Type</code>标记，可以传输任意数据类型的数据对象(文本、图片、视频等等)，非常灵活</li>
+<li><strong>简单快速</strong>：发送请求访问某个资源时，只需传送请求方法和URL就可以了，使用简单，正由于http协议简单，使得http服务器的程序规模小，因而通信速度很快</li>
+</ul>
+<p><strong>缺点</strong>：<code>无状态</code>、<code>不安全</code>、<code>明文传输</code>、<code>队头阻塞</code></p>
+<ul>
+<li><strong>无状态</strong>：请求不会记录任何连接信息，没有记忆，就无法区分多个请求发起者身份是不是同一个客户端的，意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大</li>
+<li><strong>不安全</strong>：<code>明文传输</code>可能被窃听不安全，缺少<code>身份认证</code>也可能遭遇伪装，还有缺少<code>报文完整性验证</code>可能遭到篡改</li>
+<li><strong>明文传输</strong>：报文(header部分)使用的是明文，直接将信息暴露给了外界，<code>WIFI陷阱</code>就是复用明文传输的特点，诱导你连上热点，然后疯狂抓取你的流量，从而拿到你的敏感信息</li>
+<li><strong>队头阻塞</strong>：开启<code>长连接</code>(下面有讲)时，只建立一个TCP连接，同一时刻只能处理一个请求，那么当请求耗时过长时，其他请求就只能阻塞状态(如何解决下面有讲)</li>
+</ul>
+<h2 id="HTTP-报文组成部分"><a href="#HTTP-报文组成部分" class="headerlink" title="HTTP 报文组成部分"></a>HTTP 报文组成部分</h2><p><strong>http报文</strong>：由<code>请求报文</code>和<code>响应报文</code>组成</p>
+<p><strong>请求报文</strong>：由<code>请求行</code>、<code>请求头</code>、<code>空行</code>、<code>请求体</code>四部分组成</p>
+<p><strong>响应报文</strong>：由<code>状态行</code>、<code>响应头</code>、<code>空行</code>、<code>响应体</code>四部分组成</p>
+<ul>
+<li><strong>请求行</strong>：包含http方法，请求地址，http协议以及版本</li>
+<li><strong>请求头&#x2F;响应头</strong>：就是一些key:value来告诉服务端我要哪些内容，要注意什么类型等，<a class="link"   href="https://link.juejin.cn/?target=https://kb.cnblogs.com/page/92320/" >请求头&#x2F;响应头每一个字段详解 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+<li><strong>空行</strong>：用来区分首部与实体，因为请求头都是key:value的格式，当解析遇到空行时，服务端就知道下一个不再是请求头部分，就该当作请求体来解析了</li>
+<li><strong>请求体</strong>：请求的参数</li>
+<li><strong>状态行</strong>：包含http协议及版本、数字状态码、状态码英文名称</li>
+<li><strong>响应体</strong>：服务端返回的数据</li>
+</ul>
+<h2 id="HTTP-请求方法-9种"><a href="#HTTP-请求方法-9种" class="headerlink" title="HTTP 请求方法(9种)"></a>HTTP 请求方法(9种)</h2><p><strong>HTTP1.0：</strong> <code>GET</code>、<code>POST</code>、<code>HEAD</code></p>
+<p><strong>HTTP1.1：</strong> <code>PUT</code>、<code>PATCH</code>、<code>DELETE</code>、<code>OPTIONS</code>、<code>TRACE</code>、<code>CONNECT</code></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>获取资源</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>传输资源，通常会造成服务器资源的修改</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td>获得报文首部</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>更新资源</td>
+</tr>
+<tr>
+<td>PATCH</td>
+<td>对PUT的补充，对已知资源部分更新 <a class="link"   href="https://link.juejin.cn/?target=https://www.runoob.com/http/http-methods.html" >菜鸟 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除资源</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>列出请求资源支持的请求方法，用来跨域请求</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td>追踪请求&#x2F;响应路径，用于测试或诊断</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td>将连接改为管道方式用于代理服务器(<code>隧道代理</code>下面有讲)</td>
+</tr>
+</tbody></table>
+<h2 id="常见-HTTP-状态码"><a href="#常见-HTTP-状态码" class="headerlink" title="常见 HTTP 状态码"></a>常见 HTTP 状态码</h2><p><strong>1xx: 指示信息——表示请求已接收，继续处理</strong></p>
+<p><strong>2xx: 成功——表示请求已被成功接收</strong></p>
+<p><strong>3xx: 重定向——表示要完成请求必须进行进一步操作</strong></p>
+<p><strong>4xx: 客户端错误——表示请求有语法错误或请求无法实现</strong></p>
+<p><strong>5xx: 服务端错误——表示服务器未能实现合法的请求</strong></p>
+<h2 id="HTTP-和-HTTPS-的区别"><a href="#HTTP-和-HTTPS-的区别" class="headerlink" title="HTTP 和 HTTPS 的区别"></a>HTTP 和 HTTPS 的区别</h2><ul>
+<li>HTTP是<code>明文传输</code>，不安全的，HTTPS是<code>加密传输</code>，安全的多</li>
+<li>HTTP标准端口是<code>80</code>，HTTPS标准端口是<code>443</code></li>
+<li>HTTP不用认证证书<code>免费</code>，HTTPS需要认证证书<code>要钱</code></li>
+<li><code>连接方式不同</code>，HTTP三次握手，HTTPS中TLS1.2版本7次，TLS1.3版本6次</li>
+<li>HTTP在OSI网络模型中是在<code>应用层</code>，而HTTPS的TLS是在<code>传输层</code></li>
+<li>HTTP是<code>无状态</code>的，HTTPS是<code>有状态</code>的</li>
+</ul>
+<p><a class="link"   href="https://juejin.cn/post/6994629873985650696?searchId=20231218133002C2D29E6CB8031B5EC787#heading-0" >https://juejin.cn/post/6994629873985650696?searchId=20231218133002C2D29E6CB8031B5EC787#heading-0 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>浏览器</tag>
+      </tags>
+  </entry>
 </search>
